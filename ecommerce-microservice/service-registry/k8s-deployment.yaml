@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-resigtry-service
+  namespace: app
+  labels:
+    app: service-resigtry-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: service-resigtry-service
+  template:
+    metadata:
+      labels:
+        app: service-resigtry-service
+    spec:
+      containers:
+        - name: service-registry-service
+          image: milanjuneja7/service-registry-service:latest
+          ports:
+            - containerPort: 8761
